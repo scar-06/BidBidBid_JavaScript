@@ -1,0 +1,8 @@
+import { JpaRepository } from 'typeorm';
+import { Bids } from './Bids';
+import { BidCollections } from './BidCollections';
+
+interface BidsRepository extends JpaRepository<Bids, number> {
+    findByCollection_Id(collectionsId: BidCollections): Promise<Bids | null>;
+    findAllByCollection_Id(collectionsId: BidCollections): Promise<Bids[]>;
+}
